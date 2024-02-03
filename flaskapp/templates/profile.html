@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang='en'>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title></title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="{{ url_for('static', filename='profile.css') }}">
+    </head>
+    <body>
+        <div class="login-page">
+            <div class="form">
+                <h1>Welcome, {{ user.username }}!</h1>
+                <div class="profile-info">
+                    <h2>Your profile information:</h2>
+                    <p>Email: {{ user.email }}</p>
+                    <p>First Name: {{ user.first_name }}</p>
+                    <p>Last Name: {{ user.last_name }}</p>
+                </div>
+            </div>
+            <div class="form">
+                <h1>Word Count of <b>Limerick.txt</b>: {{ word_count }}</h1>
+                <form action="/download" method="get">
+                    <button type="submit">Download Limerick.txt</button>
+                </form>
+                <a href="{{ url_for('logout') }}">Logout</a>
+            </div>
+        </div>
+        
+
+
+    <a href="{{ url_for('logout') }}">Logout</a>
+    </body>
+</html>

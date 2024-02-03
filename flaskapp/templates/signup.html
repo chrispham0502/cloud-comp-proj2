@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang='en'>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title>Register</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="{{ url_for('static', filename='login.css') }}">
+    </head>
+    <body>
+        <div class="login-page">
+            <div class="form">
+              <form class="login-form" method="POST">
+                {{ form.hidden_tag() }}
+                {{ form.username}}
+                {{ form.email}}
+                {{ form.first_name}}
+                {{ form.last_name}}
+                {{ form.password}}
+                {% if form.username.errors %}
+                    <p class="error-message">{{ form.username.errors[0] }}</p>
+                {% endif %}
+                <button type="submit">CREATE ACCOUNT</button>
+                <p class="message">Already have an account? <a href="{{ url_for('login') }}">Log in</a></p>
+              </form>
+            </div>
+        </div>
+    </body>
+</html>
