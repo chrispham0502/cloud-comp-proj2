@@ -44,7 +44,7 @@ class RegisterForm(FlaskForm):
   def validate_username(self, username):
     existing_username = User.query.filter_by(username = username.data).first()
     if existing_username:
-      raise ValidationError("Username taken ")
+      raise ValidationError("Username taken. Please choose a different one.")
     
 class LoginForm(FlaskForm):
   
@@ -78,12 +78,15 @@ def download():
 @app.route("/login", methods=['GET','POST'])
 def login():
   form = LoginForm()
+  message=''
   if form.validate_on_submit():
     user = User.query.filter_by(username=form.username.data).first()
     if user and bcrypt.check_password_hash(user.password, form.password.data):
       login_user(user)
       return redirect(url_for('profile'))
-  return render_template('login.html', form = form)
+    else:
+      message = "Invalid login credentials. Please try again."
+  return render_template('login.html', form = form, message=message)
 
 
 @app.route("/logout", methods=['GET','POST'])
