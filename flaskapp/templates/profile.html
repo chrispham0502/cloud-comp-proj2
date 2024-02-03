@@ -18,13 +18,13 @@
                     <p>First Name: {{ user.first_name }}</p>
                     <p>Last Name: {{ user.last_name }}</p>
                 </div>
+                <a href="{{ url_for('logout') }}">Logout</a>
             </div>
             <div class="form">
                 <h1>Word Count of <b>Limerick.txt</b>: {{ word_count }}</h1>
                 <form action="/download" method="get">
                     <button type="submit">Download Limerick.txt</button>
                 </form>
-                <a href="{{ url_for('logout') }}">Logout</a>
             </div>
         </div>
         
